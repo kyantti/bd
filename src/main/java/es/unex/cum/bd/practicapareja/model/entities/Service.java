@@ -1,4 +1,4 @@
-package es.unex.cum.bd.practicapareja.model;
+package es.unex.cum.bd.practicapareja.model.entities;
 
 import java.util.List;
 

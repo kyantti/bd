@@ -1,4 +1,4 @@
-package es.unex.cum.bd.practicapareja.model;
+package es.unex.cum.bd.practicapareja.model.entities;
 
 import java.util.List;
 
@@ -40,7 +40,5 @@ public class Section {
     public void setResources(List<Resource> resources) {
         this.resources = resources;
     }
-
-    
     
 }

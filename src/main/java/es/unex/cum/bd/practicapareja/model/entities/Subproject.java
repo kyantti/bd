@@ -1,16 +1,14 @@
-package es.unex.cum.bd.practicapareja.model;
+package es.unex.cum.bd.practicapareja.model.entities;
 
 import java.util.Date;
-import java.util.List;
 
-public class Project {
-    
+public class Subproject {
+
     private int id;
     private String name;
     private Date startDate;
-    private Date endDate; 
-    private Service service;
-    private List <Subproject> subprojects;
+    private Date endDate;
+    private Project project;
     
     public int getId() {
         return id;
@@ -36,20 +34,13 @@ public class Project {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
-    public Service getService() {
-        return service;
+    public Project getProject() {
+        return project;
     }
-    public void setService(Service service) {
-        this.service = service;
+    public void setProject(Project project) {
+        this.project = project;
     }
-    public List<Subproject> getSubprojects() {
-        return subprojects;
-    }
-    public void setSubprojects(List<Subproject> subprojects) {
-        this.subprojects = subprojects;
-    }
-    
-    
+
     
 }
 

@@ -20,12 +20,6 @@
             <artifactId>mssql-jdbc</artifactId>
             <version>8.2.2.jre11</version>
         </dependency>
-         <!-- add Hibernate -->
-        <dependency>
-             <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>5.2.3.Final</version>
-        </dependency>
   </dependencies>
   <properties>
         <!-- specify which version of Java to build against-->

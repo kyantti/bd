@@ -8,20 +8,20 @@ use Proyectos
 
 CREATE TABLE Direcciones
 (
-   DGN_Id_dirgen SMALLINT PRIMARY KEY,
+   DGN_Id_dirgen SMALLINT IDENTITY(1,1) PRIMARY KEY,
    DGN_Denominacion VARCHAR(150)
 );
 
 CREATE TABLE Servicios
 (
-   SRV_Id_servicio SMALLINT NOT NULL PRIMARY KEY,
+   SRV_Id_servicio SMALLINT NOT NULL IDENTITY(1,1) PRIMARY KEY,
    SRV_Denominacion varchar(150),
    SRV_Id_dirgen SMALLINT FOREIGN KEY REFERENCES Direcciones (DGN_Id_dirgen)
 );
 
 CREATE TABLE Proyectos
 (
-   Id_proyecto SMALLINT NOT NULL PRIMARY KEY,
+   Id_proyecto SMALLINT NOT NULL IDENTITY(1,1) PRIMARY KEY,
    DenominacionC varchar(50) NOT NULL,
    DenominacionL varchar(250),
    FechaInicio SMALLDATETIME,
@@ -30,13 +30,13 @@ CREATE TABLE Proyectos
 
 CREATE TABLE Secciones
 (
-   SCC_Id_seccion TINYINT NOT NULL PRIMARY KEY,
+   SCC_Id_seccion TINYINT NOT NULL IDENTITY(1,1) PRIMARY KEY,
    SCC_Denominacion VARCHAR(80)
 );
 
 CREATE TABLE Recursos
 (
-   RCR_Id_recurso SMALLINT NOT NULL PRIMARY KEY,
+   RCR_Id_recurso SMALLINT NOT NULL IDENTITY(1,1) PRIMARY KEY,
    RCR_nombre varchar(60) NOT NULL,
    RCR_Id_seccion TINYINT NOT NULL,
    RCR_NRPT INT,
@@ -56,13 +56,13 @@ CREATE TABLE Adscripciones
 
 CREATE TABLE Empresas
 (
-   MPR_Id_empresa SMALLINT NOT NULL PRIMARY KEY,
+   MPR_Id_empresa SMALLINT NOT NULL IDENTITY(1,1) PRIMARY KEY,
    MPR_Denominacion VARCHAR(80)
 );
 
 CREATE TABLE RecursosX
 (
-   RCX_Id_recursoX SMALLINT NOT NULL PRIMARY KEY,
+   RCX_Id_recursoX SMALLINT NOT NULL IDENTITY(1,1) PRIMARY KEY,
    RCX_Nombre VARCHAR(60) NOT NULL,
    RCX_DNI CHAR(9),
    RCX_Id_empresa SMALLINT FOREIGN KEY REFERENCES Empresas (MPR_Id_empresa)
@@ -70,13 +70,13 @@ CREATE TABLE RecursosX
 
 CREATE TABLE Estados
 (
-   STD_Id_estado SMALLINT NOT NULL PRIMARY KEY,
+   STD_Id_estado SMALLINT NOT NULL IDENTITY(1,1) PRIMARY KEY,
    STD_Denominacion VARCHAR(25)
 );
 
 CREATE TABLE Subproyectos
 (
-   SBP_Id_subproyecto SMALLINT NOT NULL PRIMARY KEY,
+   SBP_Id_subproyecto SMALLINT NOT NULL IDENTITY(1,1) PRIMARY KEY,
    SBP_DenominacionC VARCHAR(50) NOT NULL,
    SBP_DenominacionL VARCHAR(250),
    SBP_FechaInicio SMALLDATETIME,
@@ -129,40 +129,40 @@ CREATE TABLE Situaciones
 --Direcciones
 INSERT INTO Direcciones
 VALUES
-   (1, 'C/ Elvira Quintana 30')
+   ('C/ Elvira Quintana 30')
 INSERT INTO Direcciones
 VALUES
-   (2, 'C/ Ana Finch 5')
+   ('C/ Ana Finch 5')
 INSERT INTO Direcciones
 VALUES
-   (3, 'C/ Marquesa Pinares 3')
+   ('C/ Marquesa Pinares 3')
 INSERT INTO Direcciones
 VALUES
-   (4, 'C/ General Prim 78')
+   ('C/ General Prim 78')
 INSERT INTO Direcciones
 VALUES
-   (5, 'C/ Rey Juan Carlos 33')
+   ('C/ Rey Juan Carlos 33')
 
 --Proyectos
 INSERT INTO Servicios
-VALUES(1, 'Montaje de computadoras', 1)
+VALUES('Montaje de computadoras', 1)
 INSERT INTO Proyectos
 VALUES
-   (1, 'Proyecto Informático Rural', 'Proyecto para llevar la informática a zonas rurales españolas', '2003-04-06', 1)
+   ('Proyecto Informático Rural', 'Proyecto para llevar la informática a zonas rurales españolas', '2003-04-06', 1)
 
 --Recursos
 INSERT INTO Secciones
-VALUES(1, 'Sección de desarollo de base de datos')
+VALUES('Sección de desarollo de base de datos')
 INSERT INTO Recursos
-VALUES(1, 'Juan Carlos Peguero', 1, 23)
+VALUES('Juan Carlos Peguero', 1, 23)
 INSERT INTO Recursos
-VALUES(2, 'Juan Arias', 1, 73)
+VALUES('Juan Arias', 1, 73)
 INSERT INTO Recursos
-VALUES(3, 'Juan Ángel Contreras', 1, 36)
+VALUES('Juan Ángel Contreras', 1, 36)
 
 --Desarrollo
 INSERT INTO Subproyectos
-VALUES(1, 'Instalación', 'Instalación de ordenadores en zonas comunes', '2003-04-09', 1)
+VALUES('Instalación', 'Instalación de ordenadores en zonas comunes', '2003-04-09', 1)
 INSERT INTO Adscripciones
 VALUES(1, 1, '2003-04-09')
 INSERT INTO Desarrollo

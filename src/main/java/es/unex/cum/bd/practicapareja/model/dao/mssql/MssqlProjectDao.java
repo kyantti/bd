@@ -22,7 +22,7 @@ public class MssqlProjectDao implements ProjectDao{
         connection = Database.getConnection();
         Project project = null;
 
-        String select = "SELECT PRY_DenominacionC, PRY_DenominacionC, PRY_DenominacionL, PRY_FechaInicio  FROM PRY_Proyectos WHERE PRY_Id_proyecto = ?";
+        String select = "SELECT PRY_DenominacionC, PRY_DenominacionL, PRY_FechaInicio, PRY_Id_servicio  FROM PRY_Proyectos WHERE PRY_Id_proyecto = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(select)) {
 

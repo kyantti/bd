@@ -8,8 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.unex.cum.bd.practicapareja.model.Database;
 import es.unex.cum.bd.practicapareja.model.dao.AddressDao;
+import es.unex.cum.bd.practicapareja.model.database.Database;
 import es.unex.cum.bd.practicapareja.model.entities.Address;
 
 public class MssqlAddressDao implements AddressDao {
@@ -21,7 +21,7 @@ public class MssqlAddressDao implements AddressDao {
         connection = Database.getConnection();
         Address address = null;
 
-        String sql = "SELECT DGN_Id_dirgen, DGN_Denominacion FROM PRY_DIRECCIONES WHERE DGN_Id_dirgen = ?";
+        String sql = "SELECT DGN_Id_dirgen, DGN_Denominacion FROM DIRECCIONES WHERE DGN_Id_dirgen = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
@@ -45,7 +45,7 @@ public class MssqlAddressDao implements AddressDao {
     public List<Address> getAll() throws SQLException {
         connection = Database.getConnection();
 
-        String sql = "SELECT DGN_Id_dirgen, DGN_Denominacion FROM PRY_DIRECCIONES";
+        String sql = "SELECT DGN_Id_dirgen, DGN_Denominacion FROM DIRECCIONES";
         
         List <Address> addresses = new ArrayList<>();
 
@@ -66,7 +66,7 @@ public class MssqlAddressDao implements AddressDao {
     public void insert(Address address) throws SQLException {
         connection = Database.getConnection();
 
-        String sql = "INSERT INTO PRY_DIRECCIONES (DGN_Denominacion) VALUES (?)";
+        String sql = "INSERT INTO DIRECCIONES (DGN_Denominacion) VALUES (?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, address.getDenomination());
@@ -107,7 +107,7 @@ public class MssqlAddressDao implements AddressDao {
     public void delete(Integer id) throws SQLException {
         connection = Database.getConnection();
 
-        String sql = "DELETE FROM PRY_DIRECCIONES WHERE DGN_Id_dirgen = ?";
+        String sql = "DELETE FROM DIRECCIONES WHERE DGN_Id_dirgen = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 

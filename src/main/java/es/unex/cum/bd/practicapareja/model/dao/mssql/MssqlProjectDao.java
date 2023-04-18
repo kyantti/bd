@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import es.unex.cum.bd.practicapareja.model.Database;
 import es.unex.cum.bd.practicapareja.model.dao.ProjectDao;
+import es.unex.cum.bd.practicapareja.model.database.Database;
 import es.unex.cum.bd.practicapareja.model.entities.Project;
 
 public class MssqlProjectDao implements ProjectDao{

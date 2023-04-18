@@ -9,11 +9,11 @@ import es.unex.cum.bd.practicapareja.model.dao.mssql.MssqlProjectDao;
 import es.unex.cum.bd.practicapareja.model.entities.Address;
 import es.unex.cum.bd.practicapareja.model.entities.Project;
 
-public class App {
+public class Main {
 
     private Scanner scanner;
 
-    private App() {
+    private Main() {
         scanner = new Scanner(System.in);
     }
 
@@ -22,7 +22,7 @@ public class App {
         MssqlAddressDao addressDao = new MssqlAddressDao();
         MssqlProjectDao projectDao = new MssqlProjectDao();
         //addressDao.insert(new Address("C.Almorchón 13"));
-        addressDao.update(new Address(11, "C.Cabeza del buey"));
+        //addressDao.update(new Address(11, "C.Cabeza del buey"));
         for (Address address : addressDao.getAll()) {
             System.out.println(address.toString());
         }
@@ -31,7 +31,7 @@ public class App {
     }
 
     public static void main(String[] args) throws SQLException {
-        App app = new App();
+        Main app = new Main();
         app.performQuery();
 
     }

@@ -1,4 +1,4 @@
-package es.unex.cum.bd.practicapareja.model;
+package es.unex.cum.bd.practicapareja.model.database;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,9 +11,9 @@ import java.sql.Statement;
 
 public class Database {
     
-    private static String url = "jdbc:sqlserver://localhost:1433;databaseName=practica";
-    private static String username = "sa";
-    private static String password = "GIT21psetraki";
+    private static String url = "jdbc:sqlserver://localhost:1433;databaseName=Proyectos";
+    private static String username = "SA";
+    private static String password = "<GIT21psetraki>";
 
 	private Database() {
 	}

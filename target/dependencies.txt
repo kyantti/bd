@@ -1,4 +1,0 @@
-digraph "es.unex.cum.bd.practicapareja:bd:jar:1.0-SNAPSHOT" { 
-	"es.unex.cum.bd.practicapareja:bd:jar:1.0-SNAPSHOT" -> "junit:junit:jar:3.8.1:test" ; 
-	"es.unex.cum.bd.practicapareja:bd:jar:1.0-SNAPSHOT" -> "com.microsoft.sqlserver:mssql-jdbc:jar:8.2.2.jre11:compile" ; 
- } 

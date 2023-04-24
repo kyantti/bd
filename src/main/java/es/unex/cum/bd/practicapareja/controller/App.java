@@ -17,7 +17,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("/es/unex/cum/bd/practicapareja/view/primary"), 640, 480);
+        scene = new Scene(loadFXML("/es/unex/cum/bd/practicapareja/view/login"), 640, 480);
         //scene.getStylesheets().add(getClass().getResource("/es/unex/cum/bd/practicapareja/view/style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();

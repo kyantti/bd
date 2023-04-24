@@ -1,7 +1,5 @@
 package es.unex.cum.bd.practicapareja.model.database;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,12 +10,28 @@ import java.sql.Statement;
 public class Database {
     
     private static String url = "jdbc:sqlserver://localhost:1433;databaseName=Proyectos";
-    private static String username = "SA";
-    private static String password = "<GIT21psetraki>";
+    private static String username;
+    private static String password;
 
 	private Database() {
 	}
 
+	public static String getUsername() {
+		return username;
+	}
+
+	public static void setUsername(String username) {
+		Database.username = username;
+	}
+
+	public static String getPassword() {
+		return password;
+	}
+
+	public static void setPassword(String password) {
+		Database.password = password;
+	}
+	
 	public static Connection getConnection() throws SQLException {
 		return DriverManager.getConnection(url, username, password);
 	}

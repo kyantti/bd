@@ -40,35 +40,35 @@
       </HBox>
       <AnchorPane prefHeight="426.0" prefWidth="600.0">
          <children>
-            <TableView fx:id="addressTableView" layoutX="10.0" layoutY="-1.0" prefHeight="349.0" prefWidth="581.0">
+            <TableView fx:id="addressTableView" editable="true" layoutX="10.0" layoutY="-1.0" prefHeight="349.0" prefWidth="581.0">
               <columns>
-                <TableColumn fx:id="addressIdCol" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="addressDenominationCol" prefWidth="75.0" text="Denominacion" />
+                <TableColumn fx:id="addressIdCol" editable="false" prefWidth="290.0" text="ID" />
+                <TableColumn fx:id="addressDenominationCol" onEditCommit="#editAddresses" prefWidth="290.0" text="Denominacion" />
               </columns>
             </TableView>
-            <TableView fx:id="projectTableView" layoutX="10.0" layoutY="-1.0" prefHeight="349.0" prefWidth="581.0">
+            <TableView fx:id="projectTableView" editable="true" layoutX="10.0" layoutY="-1.0" prefHeight="349.0" prefWidth="581.0">
               <columns>
-                <TableColumn fx:id="projectIdCol" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="tittleCol" prefWidth="75.0" text="Título" />
-                <TableColumn fx:id="descriptionCol" prefWidth="75.0" text="Descripción" />
-                <TableColumn fx:id="startDateCol" prefWidth="75.0" text="Fecha de Inicio" />
-               <TableColumn fx:id="projectServiceIdCol" prefWidth="75.0" text="ID de Servicio" />
+                <TableColumn fx:id="projectIdCol" prefWidth="116.0" text="ID" />
+                <TableColumn fx:id="tittleCol" prefWidth="116.0" text="Título" />
+                <TableColumn fx:id="descriptionCol" prefWidth="116.0" text="Descripción" />
+                <TableColumn fx:id="startDateCol" prefWidth="116.0" text="Fecha de Inicio" />
+               <TableColumn fx:id="projectServiceIdCol" prefWidth="116.0" text="ID de Servicio" />
               </columns>
             </TableView>
-            <TableView fx:id="serviceTableView" layoutX="10.0" layoutY="-1.0" prefHeight="349.0" prefWidth="581.0">
+            <TableView fx:id="serviceTableView" editable="true" layoutX="10.0" layoutY="-1.0" prefHeight="349.0" prefWidth="581.0">
               <columns>
-                <TableColumn fx:id="serviceIdCol" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="serviceDenominationCol" prefWidth="75.0" text="Denominación" />
-                <TableColumn fx:id="serviceAddressIdCol" prefWidth="75.0" text="ID de Dirección" />
+                <TableColumn fx:id="serviceIdCol" prefWidth="193.0" text="ID" />
+                <TableColumn fx:id="serviceDenominationCol" prefWidth="193.0" text="Denominación" />
+                <TableColumn fx:id="serviceAddressIdCol" prefWidth="193.0" text="ID de Dirección" />
               </columns>
             </TableView>
-            <TableView fx:id="tableView" layoutX="10.0" layoutY="-1.0" prefHeight="349.0" prefWidth="581.0">
+            <TableView fx:id="tableView" editable="true" layoutX="10.0" layoutY="-1.0" prefHeight="349.0" prefWidth="581.0">
               <columns>
-                <TableColumn fx:id="id" prefWidth="75.0" text="id" />
-                <TableColumn fx:id="value1" prefWidth="75.0" text="value1" />
-                  <TableColumn fx:id="value2" prefWidth="75.0" text="value2" />
-                  <TableColumn fx:id="value3" prefWidth="75.0" text="value3" />
-                  <TableColumn fx:id="value4" prefWidth="75.0" text="value4" />
+                <TableColumn fx:id="id" prefWidth="116.0" text="id" />
+                <TableColumn fx:id="value1" prefWidth="116.0" text="value1" />
+                  <TableColumn fx:id="value2" prefWidth="116.0" text="value2" />
+                  <TableColumn fx:id="value3" prefWidth="116.0" text="value3" />
+                  <TableColumn fx:id="value4" prefWidth="116.0" text="value4" />
               </columns>
             </TableView>
          </children>

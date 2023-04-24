@@ -19,15 +19,18 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TablePosition;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
-
+import javafx.scene.control.cell.TextFieldTableCell;
 
 public class PrimaryController implements Initializable {
 
-    //addresess
+    // addresess
     @FXML
     private TableView<Address> addressTableView;
 
@@ -39,7 +42,7 @@ public class PrimaryController implements Initializable {
 
     private AddressDao addressDao;
 
-    //projects
+    // projects
     @FXML
     private TableView<Project> projectTableView;
 
@@ -53,14 +56,14 @@ public class PrimaryController implements Initializable {
     private TableColumn<Project, String> descriptionCol;
 
     @FXML
-    private TableColumn<Project, Date> startDateCol;
+    private TableColumn<Project, String> startDateCol;
 
     @FXML
-    private TableColumn<Project, Integer> projectServiceIdCol;
+    private TableColumn<Project, String> projectServiceIdCol;
 
     private ProjectDao projectDao;
 
-    //services
+    // services
 
     @FXML
     private TableView<Service> serviceTableView;
@@ -76,16 +79,13 @@ public class PrimaryController implements Initializable {
 
     private ServiceDao serviceDao;
 
-    //other
+    // other
 
     @FXML
     private TableView<?> tableView;
 
-
     @FXML
     private ToggleGroup tables;
-
-    
 
     @FXML
     void manageAddresses(ActionEvent event) throws SQLException {
@@ -104,6 +104,11 @@ public class PrimaryController implements Initializable {
     }
 
     @FXML
+    void editAddresses(ActionEvent event) {
+
+    }
+
+    @FXML
     void manageCompanies(ActionEvent event) {
 
     }
@@ -114,6 +119,23 @@ public class PrimaryController implements Initializable {
         projectTableView.setVisible(true);
         serviceTableView.setVisible(false);
         tableView.setVisible(false);
+
+        // get the data you need to display in the tableview
+        ObservableList<Project> projects;
+        try {
+            projects = FXCollections.observableArrayList(projectDao.getAll());
+            // update the tableview to show the data
+            projectTableView.setItems(projects);
+            tittleCol.setCellFactory(TextFieldTableCell.forTableColumn());
+            descriptionCol.setCellFactory(TextFieldTableCell.forTableColumn());
+            startDateCol.setCellFactory(TextFieldTableCell.forTableColumn());
+            projectServiceIdCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+
     }
 
     @FXML
@@ -134,17 +156,38 @@ public class PrimaryController implements Initializable {
         serviceTableView.setVisible(false);
         tableView.setVisible(false);
 
-        ObservableList<Address> addresses;
-        try {
-            addresses = FXCollections.observableArrayList(addressDao.getAll());
-            // update the tableview to show the data
-            addressTableView.setItems(addresses);
-            addressIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-            addressDenominationCol.setCellValueFactory(new PropertyValueFactory<>("denomination"));
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        /*
+         * ObservableList<Address> addresses;
+         * try {
+         * addresses = FXCollections.observableArrayList(addressDao.getAll());
+         * addressTableView.setItems(addresses);
+         * addressIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+         * addressDenominationCol.setCellFactory(TextFieldTableCell.forTableColumn());
+         * addressDenominationCol.setCellValueFactory(new
+         * PropertyValueFactory<>("denomination"));
+         * 
+         * } catch (SQLException e) {
+         * // TODO Auto-generated catch block
+         * e.printStackTrace();
+         * }
+         */
+
+        addressTableView.setPlaceholder(new Label("No data available."));
+
+        // Create a custom table row factory
+        addressTableView.setRowFactory(tv -> {
+            TableRow<Address> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && row.isEmpty()) {
+                    addressTableView.getItems().add(new Address(null));
+                    addressTableView.getSelectionModel().selectLast();
+                    addressTableView.edit(addressTableView.getItems().size() - 1, addressTableView.getColumns().get(0));
+                }
+            });
+            return row;
+        });
+
+    
     }
 
 }

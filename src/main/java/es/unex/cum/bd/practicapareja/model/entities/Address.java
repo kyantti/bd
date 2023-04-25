@@ -1,6 +1,6 @@
 package es.unex.cum.bd.practicapareja.model.entities;
 
-public class Address {
+public class Address implements Comparable <Address> {
 
     private int id;
     private String denomination;
@@ -33,6 +33,11 @@ public class Address {
     @Override
     public String toString() {
         return "Address [id=" + id + ", denomination=" + denomination + "]";
+    }
+
+    @Override
+    public int compareTo(Address othAddress) {
+        return Integer.compare(this.id, othAddress.id);
     }
 
 }

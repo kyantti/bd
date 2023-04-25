@@ -27,6 +27,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseButton;
 
 public class PrimaryController implements Initializable {
 
@@ -92,7 +94,7 @@ public class PrimaryController implements Initializable {
         addressTableView.setVisible(true);
         projectTableView.setVisible(false);
         serviceTableView.setVisible(false);
-        tableView.setVisible(false);
+        addressTableView.setVisible(false);
 
         // get the data you need to display in the tableview
         ObservableList<Address> addresses = FXCollections.observableArrayList(addressDao.getAll());
@@ -118,7 +120,7 @@ public class PrimaryController implements Initializable {
         addressTableView.setVisible(false);
         projectTableView.setVisible(true);
         serviceTableView.setVisible(false);
-        tableView.setVisible(false);
+        addressTableView.setVisible(false);
 
         // get the data you need to display in the tableview
         ObservableList<Project> projects;
@@ -143,7 +145,7 @@ public class PrimaryController implements Initializable {
         addressTableView.setVisible(false);
         projectTableView.setVisible(false);
         serviceTableView.setVisible(true);
-        tableView.setVisible(false);
+        addressTableView.setVisible(false);
     }
 
     @Override
@@ -152,42 +154,89 @@ public class PrimaryController implements Initializable {
         projectDao = new MssqlProjectDao();
         serviceDao = new MssqlServiceDao();
 
+        tableView.setVisible(false);
         projectTableView.setVisible(false);
         serviceTableView.setVisible(false);
-        tableView.setVisible(false);
+        addressTableView.setVisible(true);
 
-        /*
-         * ObservableList<Address> addresses;
-         * try {
-         * addresses = FXCollections.observableArrayList(addressDao.getAll());
-         * addressTableView.setItems(addresses);
-         * addressIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-         * addressDenominationCol.setCellFactory(TextFieldTableCell.forTableColumn());
-         * addressDenominationCol.setCellValueFactory(new
-         * PropertyValueFactory<>("denomination"));
-         * 
-         * } catch (SQLException e) {
-         * // TODO Auto-generated catch block
-         * e.printStackTrace();
-         * }
-         */
+        ObservableList<Address> addresses;
+        try {
+            addresses = FXCollections.observableArrayList(addressDao.getAll());
+            addressTableView.setItems(addresses);
+            addressIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+            addressDenominationCol.setCellFactory(TextFieldTableCell.forTableColumn());
+            addressDenominationCol.setCellValueFactory(new PropertyValueFactory<>("denomination"));
 
-        addressTableView.setPlaceholder(new Label("No data available."));
-
-        // Create a custom table row factory
-        addressTableView.setRowFactory(tv -> {
-            TableRow<Address> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && row.isEmpty()) {
-                    addressTableView.getItems().add(new Address(null));
-                    addressTableView.getSelectionModel().selectLast();
-                    addressTableView.edit(addressTableView.getItems().size() - 1, addressTableView.getColumns().get(0));
+            addressDenominationCol.setOnEditCommit(event -> {
+                Address address = event.getRowValue();
+                address.setDenomination(event.getNewValue());
+                try {
+                    addressDao.update(address);
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
                 }
             });
-            return row;
-        });
 
-    
+            addressTableView.setOnKeyPressed(event -> {
+                if (event.getCode().equals(KeyCode.DELETE)) {
+                    Address selectedAddress = addressTableView.getSelectionModel().getSelectedItem();
+                    try {
+                        addressDao.delete(selectedAddress.getId());
+                        addresses.remove(selectedAddress);
+                    } catch (SQLException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            addressTableView.setRowFactory(tv -> {
+                TableRow<Address> row = new TableRow<>();
+                row.setOnMouseClicked(event -> {
+                    if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2 && row.isEmpty()) {
+                        Address newAddress = new Address(null);
+                        if (addresses.isEmpty()) {
+                            //newAddress.setId(1);
+                        } else {
+                            int lastId;
+                            try {
+                                int size = addressDao.getAll().size();
+                                System.out.println(size);
+                                lastId = addressDao.get(size - 1).getId();
+                                newAddress.setId(lastId + 1);
+                            } catch (SQLException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            } 
+                        }
+                        addresses.add(newAddress);
+                        addressTableView.getSelectionModel().select(newAddress);
+                        addressTableView.scrollTo(newAddress);
+                        addressTableView.edit(addressTableView.getSelectionModel().getSelectedIndex(), addressDenominationCol);
+                    }
+                    
+                });
+                return row;
+            });
+
+            addressDenominationCol.setOnEditCommit(event -> {
+                Address address = event.getRowValue();
+                address.setDenomination(event.getNewValue());
+                try {
+                    addressDao.insert(address);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            });
+            
+            
+            
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
     }
 
 }

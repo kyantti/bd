@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import es.unex.cum.bd.practicapareja.model.dao.AddressDao;
@@ -38,6 +39,8 @@ public class MssqlAddressDao implements AddressDao {
             Database.closeConnection(connection);
         }
 
+        
+
         return address;
     }
 
@@ -58,6 +61,9 @@ public class MssqlAddressDao implements AddressDao {
                 addresses.add(new Address(id, denomination));
             }
         }
+
+
+        Collections.sort(addresses);
 
         return addresses;
     }
@@ -89,7 +95,7 @@ public class MssqlAddressDao implements AddressDao {
     public void update(Address address) throws SQLException {
         connection = Database.getConnection();
 
-        String sql = "UPDATE PRY_DIRECCIONES set DGN_Denominacion = ? WHERE DGN_Id_dirgen = ?";
+        String sql = "UPDATE DIRECCIONES set DGN_Denominacion = ? WHERE DGN_Id_dirgen = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 

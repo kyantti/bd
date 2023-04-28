@@ -1,15 +1,19 @@
 package es.unex.cum.bd.practicapareja.model.entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Project {
     private int id;
     private String tittle;
     private String description;
-    private Date startDate;
+    private LocalDate startDate;
     private int serviceId;
 
-    public Project(int id, String tittle, String description, Date startDate, int serviceId) {
+    public Project(){
+        
+    }
+
+    public Project(int id, String tittle, String description, LocalDate startDate, int serviceId) {
         this.id = id;
         this.tittle = tittle;
         this.description = description;
@@ -17,7 +21,7 @@ public class Project {
         this.serviceId = serviceId;
     }
 
-    public Project(String tittle, String description, Date startDate, int serviceId) {
+    public Project(String tittle, String description, LocalDate startDate, int serviceId) {
         this.tittle = tittle;
         this.description = description;
         this.startDate = startDate;
@@ -48,11 +52,11 @@ public class Project {
         this.description = description;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
@@ -63,4 +67,11 @@ public class Project {
     public void setServiceId(int serviceId) {
         this.serviceId = serviceId;
     }
+
+    @Override
+    public String toString() {
+        return "Project [id=" + id + ", tittle=" + tittle + ", description=" + description + ", startDate=" + startDate
+                + ", serviceId=" + serviceId + "]";
+    }
+
 }

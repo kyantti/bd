@@ -1,19 +1,12 @@
 package es.unex.cum.bd.practicapareja.model.entities;
 
-public class Service {
+public class Section {
     private int id;
     private String denomination;
-    private int addressId;
 
-    public Service(int id, String denomination, int addressId) {
+    public Section(int id, String denomination) {
         this.id = id;
         this.denomination = denomination;
-        this.addressId = addressId;
-    }
-
-    public Service(String denomination, int addressId) {
-        this.denomination = denomination;
-        this.addressId = addressId;
     }
 
     public int getId() {
@@ -31,13 +24,5 @@ public class Service {
     public void setDenomination(String denomination) {
         this.denomination = denomination;
     }
-
-    public int getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
-    }
-
+    
 }

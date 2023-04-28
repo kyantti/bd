@@ -19,12 +19,13 @@ public class LoginController {
 
     @FXML
     void connect(ActionEvent event) {
+        Database.setHost("jdbc:sqlserver://localhost:1433;databaseName=Proyectos");
         Database.setUsername(userTextField.getText());
         Database.setPassword(passwordTextField.getText());
 
         try {
             Database.getConnection();
-            App.setRoot("/es/unex/cum/bd/practicapareja/view/primary");
+            App.setRoot("/es/unex/cum/bd/practicapareja/view/selectTable");
             // Si la conexión es exitosa, hacer lo que se requiere
 
         } catch (SQLException | IOException e) {

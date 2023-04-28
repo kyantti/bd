@@ -17,9 +17,12 @@ public class MssqlAddressDao implements AddressDao {
 
     private Connection connection;
 
+    public MssqlAddressDao(Connection connection) {
+        this.connection = connection;
+    }
+
     @Override
     public Address get(Integer id) throws SQLException {
-        connection = Database.getConnection();
         Address address = null;
 
         String sql = "SELECT DGN_Id_dirgen, DGN_Denominacion FROM DIRECCIONES WHERE DGN_Id_dirgen = ?";
@@ -38,15 +41,11 @@ public class MssqlAddressDao implements AddressDao {
             Database.closePreparedStatement(preparedStatement);
             Database.closeConnection(connection);
         }
-
-        
-
         return address;
     }
 
     @Override
     public List<Address> getAll() throws SQLException {
-        connection = Database.getConnection();
 
         String sql = "SELECT DGN_Id_dirgen, DGN_Denominacion FROM DIRECCIONES";
         
@@ -70,21 +69,14 @@ public class MssqlAddressDao implements AddressDao {
 
     @Override
     public void insert(Address address) throws SQLException {
-        connection = Database.getConnection();
 
-        String sql = "INSERT INTO DIRECCIONES (DGN_Denominacion) VALUES (?)";
+        String sql = "INSERT INTO DIRECCIONES (DGN_Id_dirgen, DGN_Denominacion) VALUES (?,?)";
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, address.getDenomination());
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, address.getId());
+            preparedStatement.setString(2, address.getDenomination());
             preparedStatement.executeUpdate();
-
-            ResultSet resultSet = preparedStatement.getGeneratedKeys();
-
-            if (resultSet.next()) {
-                address.setId(resultSet.getInt(1));
-            }
-
-            Database.closeResultSet(resultSet);
+            
             Database.closePreparedStatement(preparedStatement);
             Database.closeConnection(connection);
         }
@@ -93,7 +85,6 @@ public class MssqlAddressDao implements AddressDao {
 
     @Override
     public void update(Address address) throws SQLException {
-        connection = Database.getConnection();
 
         String sql = "UPDATE DIRECCIONES set DGN_Denominacion = ? WHERE DGN_Id_dirgen = ?";
 
@@ -111,7 +102,6 @@ public class MssqlAddressDao implements AddressDao {
 
     @Override
     public void delete(Integer id) throws SQLException {
-        connection = Database.getConnection();
 
         String sql = "DELETE FROM DIRECCIONES WHERE DGN_Id_dirgen = ?";
 

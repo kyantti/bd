@@ -1,0 +1,121 @@
+#tableview {
+    -fx-background-color: #F6F6F6;
+}
+
+.table-row-cell {
+    -fx-background-color: #F6F6F6;
+    -fx-text-fill: #202020;
+    -fx-border-color: #B4B4B4;
+    -fx-border-radius: 0;
+    -fx-border-width: 0 0 1 0;
+    -fx-font-family: "Helvetica Neue";
+    -fx-font-size: 13px;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #F2F2F2;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #007AFF;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: #E6E6E6;
+    -fx-background-insets: 0 0 -1 0;
+    -fx-background-radius: 0;
+    -fx-border-color: #B4B4B4;
+    -fx-border-radius: 0;
+    -fx-border-width: 0 0 1 0;
+    -fx-text-fill: #202020;
+    -fx-font-family: "Helvetica Neue";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.table-view .column-header:hover {
+    -fx-background-color: #D8D8D8;
+}
+
+.table-view .column-header:pressed {
+    -fx-background-color: #C8C8C8;
+}
+
+.button {
+    -fx-background-color: #007AFF;
+    -fx-background-radius: 10px;
+    -fx-border-color: transparent;
+    -fx-border-radius: 10px;
+    -fx-text-fill: white;
+    -fx-font-family: "Helvetica Neue";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-background-color: #006FE6;
+}
+
+.button:pressed {
+    -fx-background-color: #0057CC;
+}
+
+#tables > .toggle-button {
+    -fx-background-color: #E6E6E6;
+    -fx-border-color: #B4B4B4;
+    -fx-border-radius: 0;
+    -fx-border-width: 0 0 0 1;
+    -fx-font-family: "Helvetica Neue";
+    -fx-font-size: 13px;
+    -fx-text-fill: #202020;
+}
+
+#tables > .toggle-button:selected {
+    -fx-background-color: #F6F6F6;
+    -fx-border-width: 0 0 0 2;
+    -fx-border-color: #007AFF;
+    -fx-text-fill: #007AFF;
+}
+
+#tables > .toggle-button:last-child {
+    -fx-border-radius: 0 0 5px 5px;
+}
+
+#tables > .toggle-button:first-child {
+    -fx-border-radius: 5px 5px 0 0;
+}
+/* PrimaryController.css */
+
+/* Add a background color to the VBox */
+#primary {
+    -fx-background-color: #f4f4f4;
+}
+
+/* Style the ToggleButtons */
+.toggle-button {
+    -fx-background-color: #d8d8d8;
+    -fx-background-radius: 0;
+    -fx-font-size: 14px;
+    -fx-text-fill: #555555;
+    -fx-padding: 8px 20px;
+}
+
+.toggle-button:hover {
+    -fx-background-color: #c2c2c2;
+}
+
+.toggle-button:pressed {
+    -fx-background-color: #a9a9a9;
+}
+
+/* Style the selected ToggleButton */
+.toggle-button:selected {
+    -fx-background-color: #007aff;
+    -fx-text-fill: #ffffff;
+}
+
+/* Add some padding to the HBox */
+.hbox {
+    -fx-padding: 10px;
+}

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="684.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.unex.cum.bd.practicapareja.controller.ServicesTableController">
+   <children>
+      <VBox layoutX="156.0" layoutY="389.0" prefHeight="161.0" prefWidth="288.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Denominación" wrappingWidth="106.21630859375">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="denominationTextField" onAction="#setDenomination">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID de Dirección" wrappingWidth="106.21630859375">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="addressIdTextField" onAction="#setAddressId">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <HBox prefHeight="4.0" prefWidth="288.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#addOrUpdateService" prefHeight="25.0" prefWidth="141.0" text="Añadir / Actualizar">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#deleteService" prefHeight="25.0" prefWidth="140.0" text="Borrar fila">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <TableView fx:id="serviceTableView" editable="true" prefHeight="362.0" prefWidth="600.0">
+         <columns>
+            <TableColumn fx:id="idCol" prefWidth="200.0" text="ID" />
+            <TableColumn fx:id="denominationCol" prefWidth="200.0" text="Denominación" />
+            <TableColumn fx:id="addressIdCol" prefWidth="200.0" text="ID de Dirección" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

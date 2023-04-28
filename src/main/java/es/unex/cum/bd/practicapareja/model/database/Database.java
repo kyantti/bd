@@ -9,14 +9,19 @@ import java.sql.Statement;
 
 public class Database {
     
-    private static String url = "jdbc:sqlserver://localhost:1433;databaseName=Proyectos";
+	private static String host;
     private static String username;
     private static String password;
 
-	private Database() {
+	public static String getHost() {
+		return host;
 	}
 
-	public static String getUsername() {
+	public static void setHost(String host) {
+		Database.host = host;
+	}
+
+	public  String getUsername() {
 		return username;
 	}
 
@@ -32,8 +37,8 @@ public class Database {
 		Database.password = password;
 	}
 	
-	public static Connection getConnection() throws SQLException {
-		return DriverManager.getConnection(url, username, password);
+	public static Connection getConnection(String host, String username, String password) throws SQLException {
+		return DriverManager.getConnection(host, username, password);
 	}
  
 	public static void closeConnection(Connection connection) throws SQLException {

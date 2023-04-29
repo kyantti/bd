@@ -4,7 +4,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import es.unex.cum.bd.practicapareja.model.dao.DaoManager;
 import es.unex.cum.bd.practicapareja.model.dao.ServiceDao;
+import es.unex.cum.bd.practicapareja.model.dao.mssql.MssqlDaoManager;
 import es.unex.cum.bd.practicapareja.model.dao.mssql.MssqlServiceDao;
 import es.unex.cum.bd.practicapareja.model.entities.Service;
 import javafx.collections.FXCollections;
@@ -42,7 +44,8 @@ public class ServicesTableController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        serviceDao = new MssqlServiceDao();
+        DaoManager daoManager = MssqlDaoManager.getInstance();
+        serviceDao = daoManager.getServiceDao();
 
         try {
             ObservableList<Service> services = FXCollections.observableArrayList(serviceDao.getAll());

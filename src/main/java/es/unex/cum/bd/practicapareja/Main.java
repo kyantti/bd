@@ -20,12 +20,6 @@ public class Main {
 
     
     private void performQuery() throws SQLException{
-        Database.setUsername("SA");
-        Database.setPassword("<GIT21psetraki>");
-        for (Project project : projectDao.getAll()) {
-            System.out.println(project.toString());
-        }
-
     }
 
     public static void main(String[] args) throws SQLException {

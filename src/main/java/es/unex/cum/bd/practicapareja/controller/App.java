@@ -32,6 +32,13 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
+    public static void openNewWindow(String fxmlName) throws IOException {
+        Stage newStage = new Stage();
+        Scene newScene = new Scene(loadFXML("/es/unex/cum/bd/practicapareja/view/" + fxmlName), 640, 480);
+        newStage.setScene(newScene);
+        newStage.show();
+    }
+    
     public static void main(String[] args) {
         launch();
     }

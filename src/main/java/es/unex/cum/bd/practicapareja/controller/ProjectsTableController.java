@@ -5,8 +5,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import es.unex.cum.bd.practicapareja.model.dao.DaoManager;
 import es.unex.cum.bd.practicapareja.model.dao.ProjectDao;
-import es.unex.cum.bd.practicapareja.model.dao.mssql.MssqlProjectDao;
+import es.unex.cum.bd.practicapareja.model.dao.mssql.MssqlDaoManager;
 import es.unex.cum.bd.practicapareja.model.entities.Project;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -56,7 +57,8 @@ public class ProjectsTableController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        projectDao = new MssqlProjectDao();
+        DaoManager daoManager = MssqlDaoManager.getInstance();
+        projectDao = daoManager.getProjectDao();
 
         try {
             ObservableList<Project> projects = FXCollections.observableArrayList(projectDao.getAll());
@@ -99,7 +101,7 @@ public class ProjectsTableController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(null);
-        alert.setContentText(e.getSQLState());
+        alert.setContentText(e.getMessage());
         alert.showAndWait();
     }
 

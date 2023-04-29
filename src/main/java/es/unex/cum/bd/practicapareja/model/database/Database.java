@@ -8,37 +8,19 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Database {
-    
-	private static String host;
-    private static String username;
-    private static String password;
 
-	public static String getHost() {
-		return host;
+	private static Connection connection;
+
+	private Database(){
+
 	}
 
-	public static void setHost(String host) {
-		Database.host = host;
-	}
-
-	public  String getUsername() {
-		return username;
-	}
-
-	public static void setUsername(String username) {
-		Database.username = username;
-	}
-
-	public static String getPassword() {
-		return password;
-	}
-
-	public static void setPassword(String password) {
-		Database.password = password;
+	public static Connection getConnection(){
+		return connection;
 	}
 	
-	public static Connection getConnection(String host, String username, String password) throws SQLException {
-		return DriverManager.getConnection(host, username, password);
+	public static void setConnection(String url, String username, String password) throws SQLException {
+		connection = DriverManager.getConnection(url, username, password);
 	}
  
 	public static void closeConnection(Connection connection) throws SQLException {
@@ -56,4 +38,5 @@ public class Database {
 	public static void closeResultSet(ResultSet resultSet) throws SQLException {
 		resultSet.close();
 	}
+
 }

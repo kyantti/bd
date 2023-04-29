@@ -4,40 +4,60 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 public class SelectTableController {
 
-    private void openNewWindow(String view) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/es/unex/cum/bd/practicapareja/view/" + view + ".fxml"));	
-		try {
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();
+    @FXML
+    void selectAddressesTable(ActionEvent event) {
+        try {
+            App.openNewWindow("addressesTable");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    void selectAddressesTable(ActionEvent event) {
-        openNewWindow("addressesTable");
-    }
-
-    @FXML
     void selectProjectsTable(ActionEvent event) {
-        openNewWindow("projectsTable");
+        try {
+            App.openNewWindow("projectsTable");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void selectServicesTable(ActionEvent event) {
-        openNewWindow("servicesTable");
+        try {
+            App.openNewWindow("servicesTable");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+    @FXML
+    void selectAscriptionsTable(ActionEvent event) {
+        try {
+            App.openNewWindow("ascriptionsTable");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void selectResourcesTable(ActionEvent event) {
+        try {
+            App.openNewWindow("resourcesTable");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void selectSectionsTable(ActionEvent event) {
+        try {
+            App.openNewWindow("sectionsTable");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -3,6 +3,7 @@ package es.unex.cum.bd.practicapareja.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import es.unex.cum.bd.practicapareja.model.dao.mssql.MssqlDaoManager;
 import es.unex.cum.bd.practicapareja.model.database.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,18 +20,15 @@ public class LoginController {
 
     @FXML
     void connect(ActionEvent event) {
-        Database.setHost("jdbc:sqlserver://localhost:1433;databaseName=Proyectos");
-        Database.setUsername(userTextField.getText());
-        Database.setPassword(passwordTextField.getText());
+        String url = "jdbc:sqlserver://localhost:1433;databaseName=Proyectos";
+        String username = userTextField.getText();
+        String password = passwordTextField.getText();
 
         try {
-            Database.getConnection();
+            Database.setConnection(url, username, password);
             App.setRoot("/es/unex/cum/bd/practicapareja/view/selectTable");
-            // Si la conexión es exitosa, hacer lo que se requiere
-
         } catch (SQLException | IOException e) {
-            // Si hay un error de conexión, mostrar una ventana emergente con un mensaje de
-            // error
+            // Si hay un error de conexión, mostrar una ventana emergente con un mensaje de error
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error de conexión");
             alert.setHeaderText(null);

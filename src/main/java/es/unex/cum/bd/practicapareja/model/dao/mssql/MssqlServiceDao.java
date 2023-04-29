@@ -40,7 +40,6 @@ public class MssqlServiceDao implements ServiceDao{
 
             Database.closeResultSet(resultSet);
             Database.closePreparedStatement(preparedStatement);
-            Database.closeConnection(connection);
         }
 
         return service;
@@ -79,7 +78,6 @@ public class MssqlServiceDao implements ServiceDao{
             preparedStatement.setInt(3, service.getAddressId());
             
             Database.closePreparedStatement(preparedStatement);
-            Database.closeConnection(connection);
         }
 
     }
@@ -98,7 +96,6 @@ public class MssqlServiceDao implements ServiceDao{
             preparedStatement.executeUpdate();
 
             Database.closePreparedStatement(preparedStatement);
-            Database.closeConnection(connection);
         }
     }
 
@@ -114,7 +111,6 @@ public class MssqlServiceDao implements ServiceDao{
             preparedStatement.executeUpdate();
 
             Database.closePreparedStatement(preparedStatement);
-            Database.closeConnection(connection);
         }
     }
     

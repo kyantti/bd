@@ -124,6 +124,7 @@ INSERT INTO Proyectos VALUES (1, 'Proyecto Informático Rural', 'Proyecto para l
 
 --Recursos
 INSERT INTO Secciones VALUES(1, 'Sección de desarollo de base de datos')
+INSERT INTO Secciones VALUES(2, 'Una nueva seccion')
 INSERT INTO Recursos VALUES(1, 'Juan Carlos Peguero', 1, 23)
 INSERT INTO Recursos VALUES(2, 'Juan Arias', 1, 73)
 INSERT INTO Recursos VALUES(3, 'Juan Ángel Contreras', 1, 36)

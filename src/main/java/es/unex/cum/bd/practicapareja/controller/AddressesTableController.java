@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 import es.unex.cum.bd.practicapareja.model.dao.AddressDao;
 import es.unex.cum.bd.practicapareja.model.dao.DaoManager;
-import es.unex.cum.bd.practicapareja.model.dao.mssql.MssqlAddressDao;
 import es.unex.cum.bd.practicapareja.model.dao.mssql.MssqlDaoManager;
 import es.unex.cum.bd.practicapareja.model.entities.Address;
 import javafx.collections.FXCollections;
@@ -38,7 +37,8 @@ public class AddressesTableController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+        DaoManager daoManager = MssqlDaoManager.getInstance();
+        addressDao = daoManager.getAddressDao();
         try {
             ObservableList<Address> addresses = FXCollections.observableArrayList(addressDao.getAll());
             idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -70,7 +70,7 @@ public class AddressesTableController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(null);
-        alert.setContentText(e.getSQLState());
+        alert.setContentText(e.getMessage());
         alert.showAndWait();
     }
 

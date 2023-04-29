@@ -6,26 +6,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import es.unex.cum.bd.practicapareja.model.dao.AddressDao;
+import es.unex.cum.bd.practicapareja.model.dao.SectionDao;
 import es.unex.cum.bd.practicapareja.model.database.Database;
-import es.unex.cum.bd.practicapareja.model.entities.Address;
+import es.unex.cum.bd.practicapareja.model.entities.Section;
 
-public class MssqlAddressDao implements AddressDao {
+public class MssqlSectionDao implements SectionDao {
 
     private Connection connection;
 
-    public MssqlAddressDao(Connection connection) {
+    public MssqlSectionDao(Connection connection) {
         this.connection = connection;
     }
 
     @Override
-    public Address get(Integer id) throws SQLException {
-        Address address = null;
+    public Section get(Integer id) throws SQLException {
+        Section sections = null;
 
-        String select = "SELECT DGN_Id_dirgen, DGN_Denominacion FROM DIRECCIONES WHERE DGN_Id_dirgen = ?";
+        String select = "SELECT SCC_Id_seccion, SCC_Denominacion FROM SECCIONES WHERE SCC_Id_seccion = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(select)) {
 
@@ -34,46 +33,43 @@ public class MssqlAddressDao implements AddressDao {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                address = new Address(resultSet.getInt("DGN_Id_dirgen"),resultSet.getString("DGN_Denominacion"));
+                sections = new Section(resultSet.getInt("DGN_Id_dirgen"),resultSet.getString("DGN_Denominacion"));
             }
 
             Database.closeResultSet(resultSet);
             Database.closePreparedStatement(preparedStatement);
         }
-        return address;
+        return sections;
     }
 
     @Override
-    public List<Address> getAll() throws SQLException {
+    public List<Section> getAll() throws SQLException {
 
-        String selectAll = "SELECT DGN_Id_dirgen, DGN_Denominacion FROM DIRECCIONES";
+        String selectAll = "SELECT SCC_Id_seccion, SCC_Denominacion FROM SECCIONES";
         
-        List <Address> addresses = new ArrayList<>();
+        List <Section> sections = new ArrayList<>();
 
         try (Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(selectAll);
 
             while (resultSet.next()) {
-                int id = resultSet.getInt("DGN_Id_dirgen");
-                String denomination = resultSet.getString("DGN_Denominacion");
-                addresses.add(new Address(id, denomination));
+                int id = resultSet.getInt("SCC_Id_seccion");
+                String denomination = resultSet.getString("SCC_Denominacion");
+                sections.add(new Section(id, denomination));
             }
         }
 
-
-        Collections.sort(addresses);
-
-        return addresses;
+        return sections;
     }
 
     @Override
-    public void insert(Address address) throws SQLException {
+    public void insert(Section sections) throws SQLException {
 
-        String insert = "INSERT INTO DIRECCIONES (DGN_Id_dirgen, DGN_Denominacion) VALUES (?,?)";
+        String insert = "INSERT INTO SECCIONES (SCC_Id_seccion, SCC_Denominacion) VALUES (?,?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insert)) {
-            preparedStatement.setInt(1, address.getId());
-            preparedStatement.setString(2, address.getDenomination());
+            preparedStatement.setInt(1, sections.getId());
+            preparedStatement.setString(2, sections.getDenomination());
             preparedStatement.executeUpdate();
             
             Database.closePreparedStatement(preparedStatement);
@@ -82,14 +78,14 @@ public class MssqlAddressDao implements AddressDao {
     }
 
     @Override
-    public void update(Address address) throws SQLException {
+    public void update(Section sections) throws SQLException {
 
-        String update = "UPDATE DIRECCIONES set DGN_Denominacion = ? WHERE DGN_Id_dirgen = ?";
+        String update = "UPDATE SECCIONES set SCC_Denominacion = ? WHERE SCC_Id_seccion = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(update)) {
 
-            preparedStatement.setString(1, address.getDenomination());
-            preparedStatement.setInt(2, address.getId());
+            preparedStatement.setString(1, sections.getDenomination());
+            preparedStatement.setInt(2, sections.getId());
 
             preparedStatement.executeUpdate();
 
@@ -100,7 +96,7 @@ public class MssqlAddressDao implements AddressDao {
     @Override
     public void delete(Integer id) throws SQLException {
 
-        String delete = "DELETE FROM DIRECCIONES WHERE DGN_Id_dirgen = ?";
+        String delete = "DELETE FROM SECCIONES WHERE SCC_Id_seccion = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(delete)) {
 
@@ -111,5 +107,4 @@ public class MssqlAddressDao implements AddressDao {
             Database.closePreparedStatement(preparedStatement);
         }
     }
-    
 }

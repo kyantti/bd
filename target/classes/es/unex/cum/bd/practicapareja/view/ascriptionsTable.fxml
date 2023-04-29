@@ -12,20 +12,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="738.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.unex.cum.bd.practicapareja.controller.ProjectsTableController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.unex.cum.bd.practicapareja.controller.AscriptionsTableController">
    <children>
-      <TableView fx:id="projectTableView" editable="true" layoutX="10.0" layoutY="10.0" prefHeight="349.0" prefWidth="581.0">
+      <TableView fx:id="ascriptionTableView" editable="true" layoutX="10.0" layoutY="10.0" prefHeight="349.0" prefWidth="581.0">
          <columns>
-            <TableColumn fx:id="projectIdCol" prefWidth="116.0" text="ID" />
-            <TableColumn fx:id="tittleCol" prefWidth="116.0" text="Título" />
-            <TableColumn fx:id="descriptionCol" prefWidth="116.0" text="Descripción" />
-            <TableColumn fx:id="startDateCol" prefWidth="116.0" text="Fecha de Inicio" />
-            <TableColumn fx:id="projectServiceIdCol" prefWidth="116.0" text="ID de Servicio" />
+            <TableColumn fx:id="sectionIdCol" prefWidth="195.0" text="ID de Seccion" />
+            <TableColumn fx:id="resourceIdCol" prefWidth="195.0" text="ID de Recurso" />
+            <TableColumn fx:id="dateCol" prefWidth="195.0" text="Fecha" />
          </columns>
       </TableView>
       <VBox layoutX="157.0" layoutY="365.0" prefHeight="244.0" prefWidth="288.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Título" wrappingWidth="106.21630859375">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID de Seccion" wrappingWidth="283.21630859375">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
@@ -33,12 +31,12 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Text>
-            <TextField fx:id="tittleTextField" onAction="#setTittle">
+            <TextField fx:id="sectionIdTextField">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </TextField>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Descripción" wrappingWidth="106.21630859375">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID de Recurso" wrappingWidth="290.21630859375">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
@@ -46,12 +44,12 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Text>
-            <TextField fx:id="descriptionTextField" onAction="#setDescription">
+            <TextField fx:id="resourceIdTextField">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </TextField>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de inicio" wrappingWidth="283.21630859375">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha" wrappingWidth="106.21630859375">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
@@ -59,32 +57,19 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Text>
-            <DatePicker fx:id="startDatePicker" onAction="#setStartDate" prefHeight="25.0" prefWidth="289.0">
+            <DatePicker fx:id="datePicker" prefHeight="25.0" prefWidth="289.0">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </DatePicker>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID de Servicio" wrappingWidth="173.21630859375">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </Text>
-            <TextField fx:id="serviceIdTextField" onAction="#setServiceId">
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </TextField>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#addOrUpdateProject" prefHeight="25.0" prefWidth="141.0" text="Añadir / Actualizar">
+                  <Button mnemonicParsing="false" onAction="#addOrUpdate" prefHeight="25.0" prefWidth="141.0" text="Añadir / Actualizar">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#deleteProject" prefHeight="25.0" prefWidth="140.0" text="Borrar fila">
+                  <Button mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="140.0" text="Borrar fila">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>

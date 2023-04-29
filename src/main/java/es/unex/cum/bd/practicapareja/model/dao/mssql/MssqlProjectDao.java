@@ -44,7 +44,6 @@ public class MssqlProjectDao implements ProjectDao{
 
             Database.closeResultSet(resultSet);
             Database.closePreparedStatement(preparedStatement);
-            Database.closeConnection(connection);
         }
 
         return project;
@@ -89,7 +88,6 @@ public class MssqlProjectDao implements ProjectDao{
 
             
             Database.closePreparedStatement(preparedStatement);
-            Database.closeConnection(connection);
         }
 
     }
@@ -110,7 +108,6 @@ public class MssqlProjectDao implements ProjectDao{
             preparedStatement.executeUpdate();
 
             Database.closePreparedStatement(preparedStatement);
-            Database.closeConnection(connection);
         }
     }
 
@@ -126,7 +123,6 @@ public class MssqlProjectDao implements ProjectDao{
             preparedStatement.executeUpdate();
 
             Database.closePreparedStatement(preparedStatement);
-            Database.closeConnection(connection);
         }
     }
     

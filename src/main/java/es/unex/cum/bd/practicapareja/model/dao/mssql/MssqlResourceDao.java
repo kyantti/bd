@@ -34,7 +34,7 @@ public class MssqlResourceDao implements ResourceDao {
             if (resultSet.next()) {
                 int newId = resultSet.getInt("DGN_Id_dirgen");
                 String name = resultSet.getString("RCR_nombre");
-                String sectionId = resultSet.getString("RCR_Id_seccion");
+                int sectionId = resultSet.getInt("RCR_Id_seccion");
                 int nrpt = resultSet.getInt("RCR_NRPT");
                 resource = new Resource(newId, name, sectionId, nrpt);
             }
@@ -58,7 +58,7 @@ public class MssqlResourceDao implements ResourceDao {
             while (resultSet.next()) {
                 int id = resultSet.getInt("RCR_Id_recurso");
                 String name = resultSet.getString("RCR_nombre");
-                String sectionId = resultSet.getString("RCR_Id_seccion");
+                int sectionId = resultSet.getInt("RCR_Id_seccion");
                 int nrpt = resultSet.getInt("RCR_NRPT");
                 resources.add(new Resource(id, name, sectionId, nrpt));
             }
@@ -75,7 +75,7 @@ public class MssqlResourceDao implements ResourceDao {
         try (PreparedStatement preparedStatement = connection.prepareStatement(insert)) {
             preparedStatement.setInt(1, resource.getId());
             preparedStatement.setString(2, resource.getName());
-            preparedStatement.setString(3, resource.getSectionId());
+            preparedStatement.setInt(3, resource.getSectionId());
             preparedStatement.setInt(4, resource.getNrpt());
             preparedStatement.executeUpdate();
             
@@ -92,7 +92,7 @@ public class MssqlResourceDao implements ResourceDao {
         try (PreparedStatement preparedStatement = connection.prepareStatement(update)) {
 
             preparedStatement.setString(1, resource.getName());
-            preparedStatement.setString(2, resource.getSectionId());
+            preparedStatement.setInt(2, resource.getSectionId());
             preparedStatement.setInt(3, resource.getNrpt());
             preparedStatement.setInt(4, resource.getId());
 

@@ -75,11 +75,15 @@ public class AscriptionsTableController implements Initializable{
             else if (event.getClickCount() == 2) {
                 ascriptionTableView.getSelectionModel().clearSelection();
                 // La fila no se ha seleccionado, borra los campos de texto
-                sectionIdTextField.clear();
-                resourceIdTextField.clear();
-                datePicker.setValue(null);
+                clearAllTextFields();
             }
         });
+    }
+
+    private void clearAllTextFields() {
+        sectionIdTextField.clear();
+        resourceIdTextField.clear();
+        datePicker.setValue(null);
     }
 
     private void showAlert(SQLException e) {

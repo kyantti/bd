@@ -88,13 +88,17 @@ public class ProjectsTableController implements Initializable {
             else if (event.getClickCount() == 2) {
                 projectTableView.getSelectionModel().clearSelection();
                 // La fila no se ha seleccionado, borra los campos de texto
-                tittleTextField.clear();
-                descriptionTextField.clear();
-                startDatePicker.setValue(null);
-                serviceIdTextField.clear();
+                clearAllTextFields();
             }
         });
         
+    }
+
+    private void clearAllTextFields() {
+        tittleTextField.clear();
+        descriptionTextField.clear();
+        startDatePicker.setValue(null);
+        serviceIdTextField.clear();
     }
 
     private void showAlert(SQLException e) {
@@ -165,6 +169,7 @@ public class ProjectsTableController implements Initializable {
                 showAlert(e);
             }
         }
+        clearAllTextFields();
         try {
             ObservableList<Project> projects = FXCollections.observableArrayList(projectDao.getAll());
             projectTableView.setItems(projects);

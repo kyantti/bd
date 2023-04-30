@@ -116,7 +116,7 @@ public class MssqlAscriptionDao implements AscriptionDao{
         int resourceId = ascription.getResourceId();
         LocalDate ascriptionDate = ascription.getAscriptionDate();
 
-        String delete = "DELETE FROM DIRECCIONES WHERE ADS_Id_seccion = ? AND ADS_Id_recurso = ? AND ADS_FechaAdsc = ?";
+        String delete = "DELETE FROM ADSCRIPCIONES WHERE ADS_Id_seccion = ? AND ADS_Id_recurso = ? AND ADS_FechaAdsc = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(delete)) {
 

@@ -3,10 +3,10 @@ package es.unex.cum.bd.practicapareja.model.entities;
 public class Resource {
     private int id;
     private String name;
-    private String sectionId;
+    private int sectionId;
     private int nrpt;
 
-    public Resource(int id, String name, String sectionId, int nrpt) {
+    public Resource(int id, String name, int sectionId, int nrpt) {
         this.id = id;
         this.name = name;
         this.sectionId = sectionId;
@@ -25,10 +25,10 @@ public class Resource {
     public void setName(String name) {
         this.name = name;
     }
-    public String getSectionId() {
+    public int getSectionId() {
         return sectionId;
     }
-    public void setSectionId(String sectionId) {
+    public void setSectionId(int sectionId) {
         this.sectionId = sectionId;
     }
     public int getNrpt() {

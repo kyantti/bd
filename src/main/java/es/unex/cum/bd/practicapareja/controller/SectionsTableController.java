@@ -43,6 +43,10 @@ public class SectionsTableController implements Initializable{
         alert.showAndWait();
     }
 
+    private void clearAllTextFields(){
+        denominationTextField.clear();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         DaoManager daoManager = MssqlDaoManager.getInstance();
@@ -69,7 +73,7 @@ public class SectionsTableController implements Initializable{
             else if (event.getClickCount() == 2) {
                 sectionTableView.getSelectionModel().clearSelection();
                 // La fila no se ha seleccionado, borra los campos de texto
-                denominationTextField.clear();
+                clearAllTextFields();
             }
         });
     }
@@ -99,6 +103,7 @@ public class SectionsTableController implements Initializable{
                 showAlert(e);
             }
         }
+        denominationTextField.clear();
         try {
             ObservableList<Section> sections = FXCollections.observableArrayList(sectionDao.getAll());
             sectionTableView.setItems(sections);

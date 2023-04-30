@@ -61,9 +61,13 @@ public class AddressesTableController implements Initializable {
             else if (event.getClickCount() == 2) {
                 addressTableView.getSelectionModel().clearSelection();
                 // La fila no se ha seleccionado, borra los campos de texto
-                denominationTextField.clear();
+                clearAllTextFields();
             }
         });
+    }
+
+    private void clearAllTextFields() {
+        denominationTextField.clear();
     }
 
     private void showAlert(SQLException e) {

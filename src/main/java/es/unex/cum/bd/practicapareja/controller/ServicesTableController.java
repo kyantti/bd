@@ -42,6 +42,11 @@ public class ServicesTableController implements Initializable {
 
     private ServiceDao serviceDao;
 
+    private void clearAllTextFields(){
+        denominationTextField.clear();
+        addressIdTextField.clear();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         DaoManager daoManager = MssqlDaoManager.getInstance();
@@ -71,8 +76,7 @@ public class ServicesTableController implements Initializable {
             else if (event.getClickCount() == 2) {
                 serviceTableView.getSelectionModel().clearSelection();
                 // La fila no se ha seleccionado, borra los campos de texto
-                denominationTextField.clear();
-                addressIdTextField.clear();
+                clearAllTextFields();
             }
         });
         
@@ -122,6 +126,7 @@ public class ServicesTableController implements Initializable {
                 showAlert(e);
             }
         }
+        clearAllTextFields();
         try {
             ObservableList<Service> services = FXCollections.observableArrayList(serviceDao.getAll());
             serviceTableView.setItems(services);

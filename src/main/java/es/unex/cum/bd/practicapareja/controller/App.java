@@ -1,12 +1,14 @@
 package es.unex.cum.bd.practicapareja.controller;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
+import es.unex.cum.bd.practicapareja.model.database.Database;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 /**
  * JavaFX App
@@ -18,9 +20,18 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("/es/unex/cum/bd/practicapareja/view/login"), 640, 480);
-        //scene.getStylesheets().add(getClass().getResource("/es/unex/cum/bd/practicapareja/view/style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
+
+        stage.setOnCloseRequest(event -> {
+            if (Database.getConnection() != null) {
+                try {
+                    Database.closeConnection();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public static void setRoot(String fxml) throws IOException {
@@ -35,6 +46,28 @@ public class App extends Application {
     public static void openNewWindow(String fxml) throws IOException {
         Stage newStage = new Stage();
         Scene newScene = new Scene(loadFXML("/es/unex/cum/bd/practicapareja/view/" + fxml), 640, 480);
+        switch (fxml) {
+            case "addressesTable":
+                newStage.setTitle("Direcciones");
+                break;
+            case "ascriptionsTable":
+                newStage.setTitle("Adscripciones");
+                break;
+            case "projectsTable":
+                newStage.setTitle("Proyectos");
+                break;
+            case "resourcesTable":
+                newStage.setTitle("Recursos");
+                break;
+            case "sectionsTable":
+                newStage.setTitle("Secciones");
+                break;
+            case "servicesTable":
+                newStage.setTitle("Servicios");
+                break;
+            default:
+                break;
+        }
         newStage.setScene(newScene);
         newStage.show();
     }

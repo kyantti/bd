@@ -31,6 +31,9 @@ public class AddressesTableController implements Initializable {
     private TextField denominationTextField;
 
     @FXML
+    private TextField idTextField;
+
+    @FXML
     private TableColumn<Address, String> idCol;
 
     private AddressDao addressDao;
@@ -55,6 +58,7 @@ public class AddressesTableController implements Initializable {
         
                 if (selectedaddress != null) {
                     // La fila se ha seleccionado, puedes hacer algo con la información
+                    idTextField.setText(String.valueOf(selectedaddress.getId()));
                     denominationTextField.setText(selectedaddress.getDenomination());
                 }
             }
@@ -67,6 +71,7 @@ public class AddressesTableController implements Initializable {
     }
 
     private void clearAllTextFields() {
+        idTextField.clear();
         denominationTextField.clear();
     }
 
@@ -79,21 +84,13 @@ public class AddressesTableController implements Initializable {
     }
 
     @FXML
-    void setDenomination(ActionEvent event) {
-
-    }
-
-
-    @FXML
     void addOrUpdateAddress(ActionEvent event) {
         Address selectedAddress = addressTableView.getSelectionModel().getSelectedItem();
         
-        int id = 0;
+        int id = Integer.parseInt(idTextField.getText());
         String denomination = denominationTextField.getText();
 
         if (selectedAddress != null) {
-            System.out.println("update");
-            id = selectedAddress.getId();
             try {
                 addressDao.update(new Address(id, denomination));
             } catch (SQLException e) {
@@ -101,9 +98,7 @@ public class AddressesTableController implements Initializable {
             }
         }
         else{
-            System.out.println("insert");
             try {
-                id = addressDao.getAll().size() + 1;
                 addressDao.insert(new Address(id, denomination));
             } catch (SQLException e) {
                 showAlert(e);

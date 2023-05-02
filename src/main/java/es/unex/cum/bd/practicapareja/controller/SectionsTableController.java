@@ -33,6 +33,9 @@ public class SectionsTableController implements Initializable{
     @FXML
     private TableView<Section> sectionTableView;
 
+    @FXML
+    private TextField idTextField;
+
     private SectionDao sectionDao;
 
     private void showAlert(SQLException e) {
@@ -44,6 +47,7 @@ public class SectionsTableController implements Initializable{
     }
 
     private void clearAllTextFields(){
+        idTextField.clear();
         denominationTextField.clear();
     }
 
@@ -67,6 +71,7 @@ public class SectionsTableController implements Initializable{
         
                 if (selectedSection != null) {
                     // La fila se ha seleccionado, puedes hacer algo con la información
+                    idTextField.setText(String.valueOf(selectedSection.getId()));
                     denominationTextField.setText(selectedSection.getDenomination());
                 }
             }
@@ -82,12 +87,10 @@ public class SectionsTableController implements Initializable{
     void addOrUpdate(ActionEvent event) {
         Section selectedSection = sectionTableView.getSelectionModel().getSelectedItem();
         
-        int id = 0;
+        int id = Integer.parseInt(idTextField.getText());
         String denomination = denominationTextField.getText();
 
         if (selectedSection != null) {
-            System.out.println("update");
-            id = selectedSection.getId();
             try {
                 sectionDao.update(new Section(id, denomination));
             } catch (SQLException e) {
@@ -95,9 +98,7 @@ public class SectionsTableController implements Initializable{
             }
         }
         else{
-            System.out.println("insert");
             try {
-                id = sectionDao.getAll().size() + 1;
                 sectionDao.insert(new Section(id, denomination));
             } catch (SQLException e) {
                 showAlert(e);

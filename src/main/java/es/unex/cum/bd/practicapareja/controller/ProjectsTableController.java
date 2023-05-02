@@ -53,6 +53,9 @@ public class ProjectsTableController implements Initializable {
     @FXML
     private TextField tittleTextField;
 
+    @FXML
+    private TextField idTextField;
+
     private ProjectDao projectDao;
 
     @Override
@@ -79,6 +82,7 @@ public class ProjectsTableController implements Initializable {
         
                 if (selectedProject != null) {
                     // La fila se ha seleccionado, puedes hacer algo con la información
+                    idTextField.setText(String.valueOf(selectedProject.getId()));
                     tittleTextField.setText(selectedProject.getTittle());
                     descriptionTextField.setText(selectedProject.getDescription());
                     startDatePicker.setValue(selectedProject.getStartDate());
@@ -95,6 +99,7 @@ public class ProjectsTableController implements Initializable {
     }
 
     private void clearAllTextFields() {
+        idTextField.clear();
         tittleTextField.clear();
         descriptionTextField.clear();
         startDatePicker.setValue(null);
@@ -107,26 +112,6 @@ public class ProjectsTableController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(e.getMessage());
         alert.showAndWait();
-    }
-
-    @FXML
-    void setTittle(ActionEvent event) {
-        System.out.println(projectTableView.getSelectionModel().getSelectedItem().toString());
-    }
-
-    @FXML
-    void setDescription(ActionEvent event) {
-        System.out.println(projectTableView.getSelectionModel().getSelectedItem().toString());
-    }
-
-    @FXML
-    void setStartDate(ActionEvent event) {
-
-    }
-
-    @FXML
-    void setServiceId(ActionEvent event) {
-
     }
 
     @FXML
@@ -145,15 +130,13 @@ public class ProjectsTableController implements Initializable {
     void addOrUpdateProject(ActionEvent event) {
         Project selectedProject = projectTableView.getSelectionModel().getSelectedItem();
         
-        int id = 0;
+        int id = Integer.parseInt(idTextField.getText());
         String tittle = tittleTextField.getText();
         String description = descriptionTextField.getText();
         LocalDate startDate = startDatePicker.getValue();
         int serviceId = Integer.parseInt(serviceIdTextField.getText());
 
         if (selectedProject != null) {
-            System.out.println("update");
-            id = selectedProject.getId();
             try {
                 projectDao.update(new Project(id, tittle, description, startDate, serviceId));
             } catch (SQLException e) {
@@ -161,9 +144,7 @@ public class ProjectsTableController implements Initializable {
             }
         }
         else{
-            System.out.println("insert");
             try {
-                id = projectDao.getAll().size() + 1;
                 projectDao.insert(new Project(id, tittle, description, startDate, serviceId));
             } catch (SQLException e) {
                 showAlert(e);

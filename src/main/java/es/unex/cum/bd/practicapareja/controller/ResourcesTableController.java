@@ -45,6 +45,9 @@ public class ResourcesTableController implements Initializable {
     @FXML
     private TextField sectionTextField;
 
+    @FXML
+    private TextField idTextField;
+
     private ResourceDao resourceDao;
 
     private void showAlert(SQLException e) {
@@ -56,6 +59,7 @@ public class ResourcesTableController implements Initializable {
     }
 
     private void clearAllTextFields(){
+        idTextField.clear();
         nameTextField.clear();
         sectionTextField.clear();
         nrptTextField.clear();
@@ -83,6 +87,7 @@ public class ResourcesTableController implements Initializable {
         
                 if (selectedresource != null) {
                     // La fila se ha seleccionado, puedes hacer algo con la información
+                    idTextField.setText(String.valueOf(selectedresource.getId()));
                     nameTextField.setText(selectedresource.getName());
                     sectionTextField.setText(String.valueOf(selectedresource.getSectionId()));
                     nrptTextField.setText(String.valueOf(selectedresource.getNrpt()));
@@ -100,14 +105,12 @@ public class ResourcesTableController implements Initializable {
     void addOrUpdate(ActionEvent event) {
         Resource selectedresource = resourceTableView.getSelectionModel().getSelectedItem();
         
-        int id = 0;
+        int id = Integer.parseInt(idTextField.getText());
         String name = nameTextField.getText();
         int sectionId = Integer.parseInt(sectionTextField.getText());
         int nrpt = Integer.parseInt(nrptTextField.getText());
 
         if (selectedresource != null) {
-            System.out.println("update");
-            id = selectedresource.getId();
             try {
                 resourceDao.update(new Resource(id, name, sectionId, nrpt));
             } catch (SQLException e) {
@@ -115,9 +118,7 @@ public class ResourcesTableController implements Initializable {
             }
         }
         else{
-            System.out.println("insert");
             try {
-                id = resourceDao.getAll().size() + 1;
                 resourceDao.insert(new Resource(id, name, sectionId, nrpt));
             } catch (SQLException e) {
                 showAlert(e);

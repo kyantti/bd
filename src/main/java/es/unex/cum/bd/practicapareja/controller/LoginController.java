@@ -3,7 +3,6 @@ package es.unex.cum.bd.practicapareja.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import es.unex.cum.bd.practicapareja.model.dao.mssql.MssqlDaoManager;
 import es.unex.cum.bd.practicapareja.model.database.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

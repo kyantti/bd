@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import es.unex.cum.bd.practicapareja.model.dao.DaoManager;
 import es.unex.cum.bd.practicapareja.model.dao.ServiceDao;
 import es.unex.cum.bd.practicapareja.model.dao.mssql.MssqlDaoManager;
-import es.unex.cum.bd.practicapareja.model.dao.mssql.MssqlServiceDao;
 import es.unex.cum.bd.practicapareja.model.entities.Service;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,9 +39,13 @@ public class ServicesTableController implements Initializable {
     @FXML
     private TableView<Service> serviceTableView;
 
+    @FXML
+    private TextField idTextField;
+
     private ServiceDao serviceDao;
 
     private void clearAllTextFields(){
+        idTextField.clear();
         denominationTextField.clear();
         addressIdTextField.clear();
     }
@@ -69,6 +72,7 @@ public class ServicesTableController implements Initializable {
         
                 if (selectedservice != null) {
                     // La fila se ha seleccionado, puedes hacer algo con la información
+                    idTextField.setText(String.valueOf(selectedservice.getId()));
                     denominationTextField.setText(selectedservice.getDenomination());
                     addressIdTextField.setText(String.valueOf(selectedservice.getAddressId()));
                 }
@@ -91,26 +95,14 @@ public class ServicesTableController implements Initializable {
     }
 
     @FXML
-    void setDenomination(ActionEvent event) {
-
-    }
-
-    @FXML
-    void setAddressId(ActionEvent event) {
-
-    }
-
-    @FXML
     void addOrUpdateService(ActionEvent event) {
         Service selectedService = serviceTableView.getSelectionModel().getSelectedItem();
 
-        int id = 0;
+        int id = Integer.parseInt(idTextField.getText());
         String denomination = denominationTextField.getText();
         int addressId = Integer.parseInt(addressIdTextField.getText());
 
         if (selectedService != null) {
-            System.out.println("update");
-            id = selectedService.getId();
             try {
                 serviceDao.update(new Service(id, denomination, addressId));
             } catch (SQLException e) {
@@ -118,9 +110,7 @@ public class ServicesTableController implements Initializable {
             }
         }
         else{
-            System.out.println("insert");
             try {
-                id = serviceDao.getAll().size() + 1;
                 serviceDao.insert(new Service(id, denomination, addressId));
             } catch (SQLException e) {
                 showAlert(e);

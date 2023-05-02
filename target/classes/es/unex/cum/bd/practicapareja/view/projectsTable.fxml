@@ -25,6 +25,16 @@
       </TableView>
       <VBox layoutX="157.0" layoutY="365.0" prefHeight="244.0" prefWidth="288.0">
          <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID" wrappingWidth="42.7431640625">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="idTextField">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Título" wrappingWidth="106.21630859375">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
@@ -33,7 +43,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Text>
-            <TextField fx:id="tittleTextField" onAction="#setTittle">
+            <TextField fx:id="tittleTextField">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -46,7 +56,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Text>
-            <TextField fx:id="descriptionTextField" onAction="#setDescription">
+            <TextField fx:id="descriptionTextField">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -59,7 +69,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Text>
-            <DatePicker fx:id="startDatePicker" onAction="#setStartDate" prefHeight="25.0" prefWidth="289.0">
+            <DatePicker fx:id="startDatePicker" prefHeight="25.0" prefWidth="289.0">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -72,7 +82,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Text>
-            <TextField fx:id="serviceIdTextField" onAction="#setServiceId">
+            <TextField fx:id="serviceIdTextField">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>

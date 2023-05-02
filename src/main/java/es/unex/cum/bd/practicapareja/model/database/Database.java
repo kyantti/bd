@@ -23,7 +23,7 @@ public class Database {
 		connection = DriverManager.getConnection(url, username, password);
 	}
  
-	public static void closeConnection(Connection connection) throws SQLException {
+	public static void closeConnection() throws SQLException {
 		connection.close();
 	}
 

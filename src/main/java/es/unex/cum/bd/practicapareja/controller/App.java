@@ -19,8 +19,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("/es/unex/cum/bd/practicapareja/view/login"), 640, 480);
+        scene = new Scene(loadFXML("/es/unex/cum/bd/practicapareja/view/login"));
         stage.setScene(scene);
+        stage.sizeToScene();
+        stage.setResizable(false);
         stage.show();
 
         stage.setOnCloseRequest(event -> {
@@ -45,7 +47,7 @@ public class App extends Application {
 
     public static void openNewWindow(String fxml) throws IOException {
         Stage newStage = new Stage();
-        Scene newScene = new Scene(loadFXML("/es/unex/cum/bd/practicapareja/view/" + fxml), 640, 480);
+        Scene newScene = new Scene(loadFXML("/es/unex/cum/bd/practicapareja/view/" + fxml));
         switch (fxml) {
             case "addressesTable":
                 newStage.setTitle("Direcciones");
@@ -69,6 +71,8 @@ public class App extends Application {
                 break;
         }
         newStage.setScene(newScene);
+        newStage.sizeToScene();
+        newStage.setResizable(false);
         newStage.show();
     }
     

@@ -21,6 +21,9 @@ public class MssqlDaoManager implements  DaoManager{
     private AscriptionDao ascriptionDao = null;
     private SectionDao sectionDao = null;
     private ResourceDao resourceDao = null;
+    
+    private MssqlProjectSubprojectDao projectSubprojectDao = null;
+    private MssqlServiceResourceDao serviceResourceDao = null;
 
 
     private MssqlDaoManager() {
@@ -80,6 +83,22 @@ public class MssqlDaoManager implements  DaoManager{
             resourceDao = new MssqlResourceDao(connection);
         }
         return resourceDao;
+    }
+
+    @Override
+    public MssqlProjectSubprojectDao getProjectSubprojectDao() {
+        if (projectSubprojectDao == null) {
+            projectSubprojectDao = new MssqlProjectSubprojectDao(connection);
+        }
+        return projectSubprojectDao;
+    }
+
+    @Override
+    public MssqlServiceResourceDao getServiceResourceDao() {
+        if (serviceResourceDao == null) {
+            serviceResourceDao = new MssqlServiceResourceDao(connection);
+        }
+        return serviceResourceDao;
     }
     
 }

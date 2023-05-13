@@ -1,4 +1,6 @@
 package es.unex.cum.bd.practicapareja.model.dao;
+import es.unex.cum.bd.practicapareja.model.dao.mssql.MssqlProjectSubprojectDao;
+import es.unex.cum.bd.practicapareja.model.dao.mssql.MssqlServiceResourceDao;
 
 public interface DaoManager {
     AddressDao getAddressDao();
@@ -7,4 +9,7 @@ public interface DaoManager {
     AscriptionDao getAscriptionDao();
     SectionDao getSectionDao();
     ResourceDao getResourceDao();
+    
+    MssqlProjectSubprojectDao getProjectSubprojectDao();
+    MssqlServiceResourceDao getServiceResourceDao();
 }

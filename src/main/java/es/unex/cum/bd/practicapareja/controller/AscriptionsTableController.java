@@ -125,6 +125,8 @@ public class AscriptionsTableController implements Initializable{
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        clearAllTextFields();
     }
 
     @FXML
@@ -137,5 +139,8 @@ public class AscriptionsTableController implements Initializable{
         } catch (SQLException e) {
             showAlert(e);
         }
+
+        clearAllTextFields();
     }
+    
 }

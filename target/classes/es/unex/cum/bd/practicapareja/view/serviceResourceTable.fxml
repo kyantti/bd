@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.unex.cum.bd.practicapareja.controller.ServiceResourceTableController">
+   <children>
+      <TableView fx:id="serviceResourceTableView" layoutX="16.0" layoutY="15.0" prefHeight="371.0" prefWidth="568.0">
+        <columns>
+          <TableColumn fx:id="serviceIdCol" prefWidth="190.0" text="Código de Servicio" />
+          <TableColumn fx:id="serviceDenominationCol" prefWidth="190.0" text="Número de Servicio" />
+            <TableColumn fx:id="numberOfResourcesCol" prefWidth="190.0" text="Número de Recursos" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

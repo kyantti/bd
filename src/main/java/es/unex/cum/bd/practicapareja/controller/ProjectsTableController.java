@@ -124,6 +124,8 @@ public class ProjectsTableController implements Initializable {
         } catch (SQLException e) {
             showAlert(e);
         }
+
+        clearAllTextFields();
     }
 
     @FXML
@@ -158,6 +160,7 @@ public class ProjectsTableController implements Initializable {
             e.printStackTrace();
         }
         
+        clearAllTextFields();
     }
 
 }

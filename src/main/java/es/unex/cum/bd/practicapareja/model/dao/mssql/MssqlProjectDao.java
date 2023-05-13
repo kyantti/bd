@@ -25,7 +25,7 @@ public class MssqlProjectDao implements ProjectDao{
     public Project get(Integer id) throws SQLException {
         Project project = null;
 
-        String select = "SELECT DenominacionC, DenominacionL, FechaInicio, Id_servicio  FROM Proyectos WHERE Id_proyecto = ?";
+        String select = "SELECT PRY_DenominacionC, PRY_DenominacionL, PRY_FechaInicio, PRY_Id_servicio  FROM Proyectos WHERE PRY_Id_proyecto = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(select)) {
 
@@ -34,10 +34,10 @@ public class MssqlProjectDao implements ProjectDao{
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                String tittle = resultSet.getString("DenominacionC");
-                String description = resultSet.getString("DenominacionL");
-                LocalDate startDate = resultSet.getDate("FechaInicio").toLocalDate();
-                int serviceId = resultSet.getInt("Id_servicio");
+                String tittle = resultSet.getString("PRY_DenominacionC");
+                String description = resultSet.getString("PRY_DenominacionL");
+                LocalDate startDate = resultSet.getDate("PRY_FechaInicio").toLocalDate();
+                int serviceId = resultSet.getInt("PRY_Id_servicio");
                 project = new Project(id, tittle, description, startDate, serviceId);
 
             }
@@ -52,7 +52,7 @@ public class MssqlProjectDao implements ProjectDao{
     @Override
     public List<Project> getAll() throws SQLException {
 
-        String selectAll = "SELECT Id_proyecto, DenominacionC, DenominacionL, FechaInicio, Id_servicio FROM Proyectos";
+        String selectAll = "SELECT PRY_Id_proyecto, PRY_DenominacionC, PRY_DenominacionL, PRY_FechaInicio, PRY_Id_servicio FROM Proyectos";
         
         List <Project> projects = new ArrayList<>();
 
@@ -60,11 +60,11 @@ public class MssqlProjectDao implements ProjectDao{
             ResultSet resultSet = statement.executeQuery(selectAll);
 
             while (resultSet.next()) {
-                int id = resultSet.getInt("Id_proyecto");
-                String tittle = resultSet.getString("DenominacionC");
-                String description = resultSet.getString("DenominacionL");
-                LocalDate startDate = resultSet.getDate("FechaInicio").toLocalDate();
-                int serviceId = resultSet.getInt("Id_servicio");
+                int id = resultSet.getInt("PRY_Id_proyecto");
+                String tittle = resultSet.getString("PRY_DenominacionC");
+                String description = resultSet.getString("PRY_DenominacionL");
+                LocalDate startDate = resultSet.getDate("PRY_FechaInicio").toLocalDate();
+                int serviceId = resultSet.getInt("PRY_Id_servicio");
                 projects.add(new Project(id, tittle, description, startDate, serviceId));
 
             }
@@ -76,7 +76,7 @@ public class MssqlProjectDao implements ProjectDao{
     @Override
     public void insert(Project project) throws SQLException {
 
-        String insert = "INSERT INTO Proyectos (Id_proyecto, DenominacionC, DenominacionL, FechaInicio, Id_servicio) VALUES (?, ?, ?, ?, ?)";
+        String insert = "INSERT INTO Proyectos (PRY_Id_proyecto, PRY_DenominacionC, PRY_DenominacionL, PRY_FechaInicio, PRY_Id_servicio) VALUES (?, ?, ?, ?, ?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setInt(1, project.getId());
@@ -95,7 +95,7 @@ public class MssqlProjectDao implements ProjectDao{
     @Override
     public void update(Project project) throws SQLException {
 
-        String update = "UPDATE Proyectos set DenominacionC = ?, DenominacionL = ?, FechaInicio = ?, Id_servicio = ? WHERE Id_proyecto = ?";
+        String update = "UPDATE Proyectos set PRY_DenominacionC = ?, PRY_DenominacionL = ?, PRY_FechaInicio = ?, PRY_Id_servicio = ? WHERE PRY_Id_proyecto = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(update)) {
 
@@ -114,7 +114,7 @@ public class MssqlProjectDao implements ProjectDao{
     @Override
     public void delete(Integer id) throws SQLException {
 
-        String delete = "DELETE FROM Proyectos WHERE Id_proyecto = ?";
+        String delete = "DELETE FROM Proyectos WHERE PRY_Id_proyecto = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(delete)) {
 

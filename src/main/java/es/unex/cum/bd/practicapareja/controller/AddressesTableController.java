@@ -110,6 +110,8 @@ public class AddressesTableController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        clearAllTextFields();
     }
 
     @FXML
@@ -122,6 +124,8 @@ public class AddressesTableController implements Initializable {
         } catch (SQLException e) {
             showAlert(e);
         }
+
+        clearAllTextFields();
     }
 
 }

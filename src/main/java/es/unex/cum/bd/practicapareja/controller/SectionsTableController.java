@@ -111,6 +111,8 @@ public class SectionsTableController implements Initializable{
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        clearAllTextFields();
     }
 
     @FXML
@@ -123,6 +125,8 @@ public class SectionsTableController implements Initializable{
         } catch (SQLException e) {
             showAlert(e);
         }
+
+        clearAllTextFields();
     }
 
 }

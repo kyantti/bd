@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.unex.cum.bd.practicapareja.controller.ProjectSubprojectWithTechnicianTableController">
+   <children>
+      <TableView fx:id="projectSubprojectTableView" layoutX="16.0" layoutY="21.0" prefHeight="358.0" prefWidth="569.0">
+        <columns>
+          <TableColumn fx:id="projectShortDenomination" prefWidth="285.0" text="Nombre Corto Proyecto" />
+          <TableColumn fx:id="subprojectLongDenomination" prefWidth="285.0" text="Nombre Largo Subproyecto" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

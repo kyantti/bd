@@ -131,6 +131,8 @@ public class ResourcesTableController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        clearAllTextFields();
     }
 
     @FXML
@@ -143,6 +145,8 @@ public class ResourcesTableController implements Initializable {
         } catch (SQLException e) {
             showAlert(e);
         }
+
+        clearAllTextFields();
     }
 
 }

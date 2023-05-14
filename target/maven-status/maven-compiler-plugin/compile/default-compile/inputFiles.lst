@@ -2,12 +2,16 @@
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/controller/SectionsTableController.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/entities/Address.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/dao/mssql/MssqlSectionDao.java
+/Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/entities/ServiceResource.java
+/Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/controller/ServiceResourceTableController.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/controller/AscriptionsTableController.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/module-info.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/dao/mssql/MssqlServiceDao.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/dao/mssql/MssqlDaoManager.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/entities/Resource.java
+/Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/controller/ProjectSubprojectWithTechnicianTableController.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/controller/ProjectsTableController.java
+/Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/controller/ProjectSubprojectWithoutTechnicianTableController.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/Main.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/dao/AddressDao.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/controller/SelectTableController.java
@@ -18,6 +22,7 @@
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/controller/App.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/dao/ProjectDao.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/dao/SectionDao.java
+/Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/dao/mssql/MssqlServiceResourceDao.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/dao/AscriptionDao.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/database/Database.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/dao/Dao.java
@@ -27,7 +32,9 @@
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/controller/ServicesTableController.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/controller/LoginController.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/dao/mssql/MssqlProjectDao.java
+/Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/entities/ProjectSubproject.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/dao/mssql/MssqlAscriptionDao.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/entities/Project.java
+/Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/dao/mssql/MssqlProjectSubprojectDao.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/entities/Ascription.java
 /Users/pablosetrakianbearzotti/desarrollo/bd/src/main/java/es/unex/cum/bd/practicapareja/model/entities/Section.java

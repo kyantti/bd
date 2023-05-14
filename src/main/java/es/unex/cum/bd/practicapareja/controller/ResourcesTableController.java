@@ -73,7 +73,7 @@ public class ResourcesTableController implements Initializable {
             ObservableList<Resource> resources = FXCollections.observableArrayList(resourceDao.getAll());
             idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
             nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-            sectionCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+            sectionCol.setCellValueFactory(new PropertyValueFactory<>("sectionId"));
             nrptCol.setCellValueFactory(new PropertyValueFactory<>("nrpt"));
             resourceTableView.setItems(resources);
         } catch (SQLException e) {
